@@ -1,0 +1,37 @@
+services:
+
+  db:
+    image: postgres:16
+    container_name: hogwarts-db
+    restart: always
+    environment:
+      POSTGRES_DB: hogwarts_db
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - hogwarts-net
+
+  api:
+    image: hogwarts-api:latest
+    container_name: hogwarts-api
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/hogwarts_db
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    networks:
+      - hogwarts-net
+
+volumes:
+  pgdata:
+
+networks:
+  hogwarts-net:
+    driver: bridge

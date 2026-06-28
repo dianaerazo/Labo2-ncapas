@@ -2,7 +2,7 @@ package org.example.labo2hogwarts.controller;
 
 import lombok.AllArgsConstructor;
 import org.example.labo2hogwarts.domain.entity.Wizard;
-import org.example.labo2hogwarts.service.WizardServiceImpl;
+import org.example.labo2hogwarts.service.impl.WizardServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

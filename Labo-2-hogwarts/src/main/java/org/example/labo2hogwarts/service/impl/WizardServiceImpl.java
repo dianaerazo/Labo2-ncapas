@@ -1,8 +1,9 @@
-package org.example.labo2hogwarts.service;
+package org.example.labo2hogwarts.service.impl;
 
 import org.example.labo2hogwarts.domain.entity.Wizard;
 import org.example.labo2hogwarts.repository.WizardRepository;
 import lombok.RequiredArgsConstructor;
+import org.example.labo2hogwarts.service.WizardService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class WizardServiceImpl implements WizardService {
 
     @Override
     public List<Wizard> getDeatheaters() {
-        return wizardRepository.getWizardsByIsDeatheater(true);
+        return wizardRepository.getWizardByIsDeatheater(true);
     }
 
     @Override
